@@ -20,8 +20,12 @@ def notify_wines():
     return {'message': json.dumps(message)}
 
 
-@app.schedule('cron(30 1 ? * MON *)')
+@app.schedule('cron(30 1 ? * MON,WED *)')
 def notify_dishdash(event):
-    message = "Hi Guys! Don't forget to order next week's DishDash! https://www.dishdash.co/ "
+    if datetime.today().weekday() == 1:
+        message = "Hi Guys! Don't forget to order next week's DishDash! https://www.dishdash.co/ "
+    else:
+        message = "Guys... If you don't order now, you won't have food on your table next week.. Order Here! " \
+                  "https://www.dishdash.co/ "
     response = requests.post(slack_webhook_url, data=json.dumps({'text': message}))
     return {'message': json.dumps(message)}
