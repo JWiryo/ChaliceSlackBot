@@ -12,13 +12,19 @@ app.debug = True
 slack_webhook_url = os.environ['SLACK_WEBHOOK_URL']
 
 
-@app.route('/wines')
-def notify_wines():
+@app.schedule('cron(0 9 ? * FRI *)')
+def notify_wines_friday(event):
     currentDate = datetime.now().strftime("%Y-%m-%d")
-    message = "Today is %s; Please remember to input your WINES for this week" % currentDate
+    message = "Today is Friday[%s]; Please remember to input your WINES for this week" % currentDate
     response = requests.post(slack_webhook_url, data=json.dumps({'text': message}))
     return {'message': json.dumps(message)}
 
+@app.schedule('cron(0 9 L * ? *)')
+def notify_wines_last_day_of_month(event):
+    currentMonth = datetime.now().strftime('%B')
+    message = "Today is the last day of the month of %s; Please remember to input your WINES" % currentMonth
+    response = requests.post(slack_webhook_url, data=json.dumps({'text': message}))
+    return {'message': json.dumps(message)}
 
 @app.schedule('cron(30 1 ? * MON,WED *)')
 def notify_dishdash(event):
