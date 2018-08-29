@@ -2,7 +2,8 @@
 
 ## Introduction
 ![enter image description here](https://drive.google.com/uc?id=1ly5X_DdmpzGjBDidWT6sAWZtQv4MmGK1)
-RMinder is a simple Slackbot built for the Reward SDK team in Rakuten to programmatically remind us to fill out timesheet and order our free lunch for the week to come.
+
+**RMinder** is a simple Slackbot built for the Reward SDK team in Rakuten to programmatically remind us to fill out timesheet and order our free lunch for the week to come.
 
 This app is actually my personal project to learn the **FaaS (Function as a Service)** platforms such as ***Lambda***, ***Azure Function*** or ***Google Cloud Function***
 
