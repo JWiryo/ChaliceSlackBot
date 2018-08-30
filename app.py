@@ -35,3 +35,11 @@ def notify_dishdash(event):
                   "https://www.dishdash.co/ "
     response = requests.post(slack_webhook_url, data=json.dumps({'text': message}))
     return {'message': json.dumps(message)}
+
+@app.route('/lunch', methods=['POST'], content_types=['application/json',
+                          'application/x-www-form-urlencoded'])
+def notify_lunch_time():
+    message = "It's Bento time! " \
+              "Enjoy your Lunch! \n " \
+              "You've been served by RMinder "
+    return {'text': message}
