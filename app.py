@@ -28,7 +28,9 @@ def notify_wines_last_day_of_month(event):
 
 @app.schedule('cron(30 1 ? * MON,WED *)')
 def notify_dishdash(event):
-    if datetime.today().weekday() == 1:
+
+    # Send first reminder message on Monday
+    if datetime.today().weekday() == 0:
         message = "Hi Guys! Don't forget to order next week's DishDash! https://www.dishdash.co/ "
     else:
         message = "Guys... If you don't order now, you won't have food on your table next week.. Order Here! " \
