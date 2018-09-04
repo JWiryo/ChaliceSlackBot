@@ -44,4 +44,7 @@ def notify_lunch_time():
     message = "It's Bento time! " \
               "Enjoy your Lunch! \n " \
               "You've been served by RMinder "
-    return {'text': message}
+    return {
+        "response_type": "in_channel",
+        'text': message
+    }
